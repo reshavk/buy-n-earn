@@ -1044,6 +1044,8 @@ h2.title {
 
 .recommended_items {
   overflow: hidden;
+  width: 1000px;
+  height: 350px;
 }
 
 #recommended-item-carousel .carousel-inner .item {

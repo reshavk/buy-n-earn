@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var firebase = require('firebase');
 var fs = require('fs');
+var request = require('request');
+var util = require('util');
+var exec = require('child_process').exec;
 //var firbaseui = require('firebaseui');
 var https = require('https');
 
@@ -40,8 +43,28 @@ app.get('/index.html', function (req, res) {
 
 app.get('/login.html', function(req, res) {
     res.sendFile('login.html', {root : __dirname});
-})
+});
+
+app.post('/index.html', function(req, res) {
+    var query = req.body['query'];
+    query = query.replace(/ /g, "+");
+
+    var options = {
+        url: "https://affiliate-api.flipkart.net/affiliate/search/json?query="+query+"&resultCount=5",
+        headers: {
+            "Fk-Affiliate-Id" : "tenacious7",
+            "Fk-Affiliate-Token" : "817aa29e4b4146aa8d00adc0f1b5ff9c"
+        }
+      };
+       
+      request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log(body);
+        }
+      });
+    
+});
 
 https.createServer(options, app).listen(3000, function() {
     console.log('Server up and running...');
-})
+});
