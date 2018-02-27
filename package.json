@@ -1,0 +1,24 @@
+{
+  "name": "buy-n-earn",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "cors": "2.8.4",
+    "express": "^4.16.2",
+    "https": "1.0.0",
+    "body-parser":"1.18.2",
+    "exec":"0.2.1",
+    "firebase": "4.9.1",
+    "amazon-product-api": "^0.4.4",
+    "path": "0.12.7",
+    "request": "2.83.0",
+    "apac": "^3.0.2"
+  },
+  "repository": {},
+  "description": "smart_shopper",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
