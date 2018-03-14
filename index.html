@@ -504,6 +504,70 @@
 	
 	function show_amazon_product(data){
 
+		console.log("Amazon result");
+		console.log(data);
+		
+/*
+		prev_content = document.getElementById('queried_product');
+		prev_content.innerHTML = "";
+
+		try{
+			prev_header = document.getElementById('feature_header');
+			prev_header.innerHTML = "";
+		}
+		catch(err){
+			//console.log(err);
+		}
+
+		initial_content = document.getElementById('features_items');
+		initial_content.innerHTML = '<h2 class="title text-center" id="feature_header">Features Items</h2>' + initial_content.innerHTML;
+*/
+		var query_container = document.getElementById("queried_product");
+
+
+		var result = data['ItemSearchResponse']['Items']['Item'];
+		//console.log("Length:" + result.length);
+		err_cnt = 0;
+		for (var i = 0; i < result.length; i++) {
+			
+			try{
+				var price = "Rs "+parseInt(result[i]['Offers']['Offer']['OfferListing']['Price']['Amount'])/100;
+				var large_img = result[i]['LargeImage']['URL'];
+				var title = result[i]['ItemAttributes']['Title'];
+				var product_link = result[i]['DetailPageURL'];
+
+				content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
+
+				query_container.innerHTML += content;
+				var container_img = document.querySelectorAll("#queried_product .col-sm-4 img");
+				var container_title = document.querySelectorAll("#queried_product .col-sm-4 #product_title");
+				var container_link = document.querySelectorAll("#queried_product .col-sm-4 #product_link");
+				var container_price = document.querySelectorAll("#queried_product .col-sm-4 #price");
+				
+				
+				container_title[5+i-err_cnt].innerHTML = title;
+				container_link[5+i-err_cnt].href = product_link;
+				container_price[5+i-err_cnt].innerHTML = price;
+				container_img[5+i-err_cnt].src = large_img;
+			}catch(err){
+				err_cnt += 1;
+				console.log("Error for err count: "+ err_cnt);
+				console.log(err);
+			}
+
+		}
+		
+		
+		
+		
+	}
+
+
+	function show_flipkart_product(data){
+
+		console.log("Flipkart result");
+		data = JSON.parse(data);
+		console.log(data);
 		prev_content = document.getElementById('queried_product');
 		prev_content.innerHTML = "";
 
@@ -519,66 +583,7 @@
 		initial_content.innerHTML = '<h2 class="title text-center" id="feature_header">Features Items</h2>' + initial_content.innerHTML;
 		var query_container = document.getElementById("queried_product");
 		
-
-		var result = data['ItemSearchResponse']['Items']['Item'];
-		//console.log("Length:" + result.length);
-		err_cnt = 0;
-		for (var i = 0; i < result.length; i++) {
-			
-			try{
-				console.log(i);
-				var price = "Rs "+parseInt(result[i]['Offers']['Offer']['OfferListing']['Price']['Amount'])/100;
-				var large_img = result[i]['LargeImage']['URL'];
-				var title = result[i]['ItemAttributes']['Title'];
-				var product_link = result[i]['DetailPageURL'];
-
-				content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
-
-				query_container.innerHTML += content;
-				var container_img = document.querySelectorAll("#queried_product .col-sm-4 img");
-				var container_title = document.querySelectorAll("#queried_product .col-sm-4 #product_title");
-				var container_link = document.querySelectorAll("#queried_product .col-sm-4 #product_link");
-				var container_price = document.querySelectorAll("#queried_product .col-sm-4 #price");
-				
-				
-				container_img[i-err_cnt].src = large_img;
-				container_title[i-err_cnt].innerHTML = title;
-				container_link[i-err_cnt].href = product_link;
-				container_price[i-err_cnt].innerHTML = price;
-			}catch(err){
-				err_cnt += 1;
-				console.log(err);
-			}
-
-		}
 		
-		
-		
-		
-	}
-
-/*
-	function show_flipkart_product(data){
-
-		prev_content = document.getElementById('queried_product');
-		prev_content.innerHTML = "";
-
-		try{
-			prev_header = document.getElementById('feature_header');
-			prev_header.innerHTML = "";
-		}
-		catch(err){
-			console.log(err);
-		}
-
-		initial_content = document.getElementById('features_items');
-		initial_content.innerHTML = '<h2 class="title text-center" id="feature_header">Features Items</h2>' + initial_content.innerHTML;
-		var query_container = document.getElementById("queried_product");
-		
-
-		
-
-		var query_container = document.getElementById("queried_product");
 		
 
 		var result = data['products'];
@@ -586,13 +591,16 @@
 		err_cnt = 0;
 		for (var i = 0; i < result.length; i++) {
 			
-			try{
+			
 
 				
 				var price = "Rs "+parseInt(result[i]['productBaseInfo']['productAttributes']['sellingPrice']['amount']);
 				var large_img = result[i]['productBaseInfo']['productAttributes']['imageUrls']['unknown'];
 				var title = result[i]['productBaseInfo']['productAttributes']['title'];
 				var product_link = result[i]['productBaseInfo']['productAttributes']['productUrl'];
+				link_arr = large_img.split("-");
+				link_arr[link_arr.length-2] += "X"+ link_arr[link_arr.length-2];
+				large_img = link_arr.join("-");
 
 				content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
 
@@ -602,17 +610,21 @@
 				var container_link = document.querySelectorAll("#queried_product .col-sm-4 #product_link");
 				var container_price = document.querySelectorAll("#queried_product .col-sm-4 #price");
 				
-				console.log(i);
+				/*console.log("================"+i+"================");
 				console.log(price);
 				console.log(title);
+				console.log(product_link);
+				console.log("\n");*/
 
+			try{
 				container_img[i-err_cnt].src = large_img;
 				container_title[i-err_cnt].innerHTML = title;
 				container_link[i-err_cnt].href = product_link;
 				container_price[i-err_cnt].innerHTML = price;
 				
 			}catch(err){
-				console.log(err);
+				console.log("Flipkart exception: "+err);
+				err_cnt++;
 			}
 
 		}
@@ -621,7 +633,7 @@
 		
 		
 	}
-*/
+
 
 
 	$(document).ready(function(){
@@ -634,20 +646,7 @@
 					"query" : query
 				}
 
-				$.ajax({
-					url : '/amazon-api',
-					data : data,
-					dataType : "json",
-					type : 'POST',
-					success	: function(data) {
-
-						console.log("=======================Amazon result=====================");
-						show_amazon_product(data);
-
-					}
-				});
-
-				$.ajax({
+				/*$.ajax({
 							url : '/flipkart-api',
 							data : data,
 							dataType : "json",
@@ -655,10 +654,30 @@
 							success	: function(data) {
 								
 								console.log("=======================Flipkart result=====================");
-								//show_flipkart_product(data);
 								console.log(data);
+								show_flipkart_product(data);
+								
 							}
+				});*/
+
+				$.ajax({
+					url : '/amazon-api',
+					data : data,
+					dataType : "json",
+					type : 'POST',
+					success	: function(data) {
+
+						//console.log("=======================Amazon result=====================");
+						//console.log(data);
+						
+						show_flipkart_product(data['flipkart-result']);
+						show_amazon_product(data['amazon-result']['result']);
+						
+
+					}
 				});
+
+				
 			}
 		});
 	});
