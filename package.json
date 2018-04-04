@@ -12,13 +12,34 @@
     "amazon-product-api": "^0.4.4",
     "path": "0.12.7",
     "request": "2.83.0",
-    "apac": "^3.0.2"
+    "apac": "^3.0.2",
+    "flipkart-affiliate":"1.1.0",
+    "paypal-rest-sdk": "^1.7.1"
   },
   "repository": {},
   "description": "smart_shopper",
   "scripts": {
-    "start": "node app.js"
+    "deploy": "gcloud app deploy",
+    "start": "node app.js",
+    "lint": "samples lint",
+    "pretest": "npm run lint",
+    "system-test": "samples test app",
+    "test": "npm run system-test",
+    "e2e-test": "samples test deploy"
+  },
+  "cloud-repo-tools": {
+    "test": {
+      "app": {
+        "msg": "Hello, world!"
+      }
+    },
+    "requiresKeyFile": true,
+    "requiresProjectId": true
+  },
+   "engines": {
+    "node": ">=4.3.2"
   },
   "author": "",
   "license": "ISC"
 }
+

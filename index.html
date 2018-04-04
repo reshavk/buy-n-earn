@@ -44,6 +44,8 @@
 	
 	<script type = "text/javascript">
 	function initApp() {
+
+		//var displayName;
       // Listening for auth state changes.
       // [START authstatelistener]
       firebase.auth().onAuthStateChanged(function(user) {
@@ -61,9 +63,30 @@
 		  var providerData = user.providerData;
 
 		  document.getElementById('login').href = "account.html";
-		  document.getElementById('login').innerHTML = "Welcome <b>" + displayName + " </b>!"; 
+		  document.getElementById('login').innerHTML = "Welcome <b>" + displayName.split(" ")[0] + " </b>!";
+		  document.getElementById('uid').innerHTML = uid;
+
+		  var userData = {
+		  	"displayName" : displayName,
+		  	"email" : email,
+		  	"photoURL" : photoURL,
+		  	"uid" : user.uid
+		  }
+		  $.ajax({
+
+	        url: '/updateUserData',
+	        data: userData,
+	        dataType:"json",
+	        type: 'POST',
+	        success: function (data) {
+	            console.log("User data set successfully!!");       
+	        } 
+
+	      });
+
 		}
 	  });
+
 	}
 	
 	window.onload = function() {
@@ -116,19 +139,14 @@
 
 						<ul class="nav navbar-nav">
 								<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
-								
-								<li><a href="#">Blog</a>
-                                </li> 
-								
-								
-							</ul>
-							</ul>
-
-
-							<ul id = "login_display" class="nav navbar-nav">
-								<li><a id = "login" href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
+									<li><a href="index.html" class="active">Home</a></li>
+									<li><a href="#">Blog</a></li> 
+								</ul>
+						</ul>
+						<ul id = "login_display" class="nav navbar-nav">
+							<li><a id = "login" href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+							<li><p id="uid" style="display: none;"></p></li>
+						</ul>
 						</div>
 					</div>
 				</div>
@@ -257,6 +275,7 @@
 					</div><!--features_items-->
 					
 					<div class="recommended_items"><!--recommended_items-->
+					<br><br>
 						<h2 class="title text-center">recommended items</h2>
 												
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -265,9 +284,7 @@
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div style ="width:300px; height:250px" data-WRID="WRID-151775057676782277" data-widgetType="Push Content"  data-class="affiliateAdsByFlipkart" height="250px" width="300px"></div>
-												<script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
-												
+												<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=gift_certificates&banner=127JF9E4530CSFRCY4R2&f=ifr&linkID=9ba6c39032d3d663a4f019f8d0b7457e&t=wtproject-20&tracking_id=wtproject-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 											</div>
 										</div>
 									</div>
@@ -275,8 +292,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<div style ="width:300px; height:250px" data-WRID="WRID-151789865812643738" data-widgetType="staticBanner" data-responsive="yes" data-class="affiliateAdsByFlipkart" height="250px" width="300px"></div>
-													<script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+													<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=wireless&banner=02HND5YJK5NEFPBWFS02&f=ifr&linkID=8efd2ca9a6428d1772684f2442048c8f&t=wtproject-20&tracking_id=wtproject-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 												</div>
 												
 											</div>
@@ -286,7 +302,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<div data-WRID="WRID-151790090906850553" data-widgetType="featuredDeals" data-responsive="yes" data-class="affiliateAdsByFlipkart" height="250" width="300"></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+													<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ez&f=ifr&linkID=5d4a785032b27c5e5ab28fa4acea0160&t=wtproject-20&tracking_id=wtproject-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 												</div>
 												
 											</div>
@@ -299,7 +315,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<div data-WRID="WRID-151790094376618119" data-widgetType="bestSellers"  data-class="affiliateAdsByFlipkart" height="250" width="300"></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+													<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=ae_assoc_fashion&banner=0PQX9617JMNH3658SXG2&f=ifr&linkID=dbba73bafdb18629b8344fde52e5f113&t=wtproject-20&tracking_id=wtproject-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe> 
 												</div>
 												
 											</div>
@@ -308,9 +324,7 @@
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div data-WRID="WRID-151790097968324245" data-widgetType="relatedProducts" data-class="affiliateAdsByFlipkart" height="250" width="300" >
-												</div>
-												<script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+												<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=ae_assoc_fashion&banner=0V4Y6C5J05F504CYWY82&f=ifr&linkID=3a0fabc45e15d559dcca18468ac29f86&t=wtproject-20&tracking_id=wtproject-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 											</div>
 												
 										</div>
@@ -318,10 +332,9 @@
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div data-WRID="WRID-151790102852778278" data-widgetType="searchWidget" data-class="affiliateAdsByFlipkart" height="250" width="300" ></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+												<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=ae_assoc_fashion&banner=051V8979ZEVCAQJT4F02&f=ifr&linkID=53c9542fdbbd0b0f6264a2f91527bf27&t=wtproject-20&tracking_id=wtproject-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 											</div>
-												
-										</div>
+										</div><hr>
 									</div>
 								</div>
 							</div>
@@ -499,110 +512,70 @@
 	<script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/popup.js"></script>
 </body>
 <script>
-	
-	function show_amazon_product(data){
+product_count = 0
+function show_amazon_product(data){
 
-		console.log("Amazon result");
-		console.log(data);
-		
-/*
-		prev_content = document.getElementById('queried_product');
-		prev_content.innerHTML = "";
+	console.log("Amazon result");
+	console.log(data);
 
-		try{
-			prev_header = document.getElementById('feature_header');
-			prev_header.innerHTML = "";
-		}
-		catch(err){
-			//console.log(err);
-		}
+	var query_container = document.getElementById("queried_product");
 
-		initial_content = document.getElementById('features_items');
-		initial_content.innerHTML = '<h2 class="title text-center" id="feature_header">Features Items</h2>' + initial_content.innerHTML;
-*/
-		var query_container = document.getElementById("queried_product");
-
-
+	try{
 		var result = data['ItemSearchResponse']['Items']['Item'];
-		//console.log("Length:" + result.length);
-		err_cnt = 0;
-		for (var i = 0; i < result.length; i++) {
-			
-			try{
-				var price = "Rs "+parseInt(result[i]['Offers']['Offer']['OfferListing']['Price']['Amount'])/100;
-				var large_img = result[i]['LargeImage']['URL'];
-				var title = result[i]['ItemAttributes']['Title'];
-				var product_link = result[i]['DetailPageURL'];
-
-				content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
-
-				query_container.innerHTML += content;
-				var container_img = document.querySelectorAll("#queried_product .col-sm-4 img");
-				var container_title = document.querySelectorAll("#queried_product .col-sm-4 #product_title");
-				var container_link = document.querySelectorAll("#queried_product .col-sm-4 #product_link");
-				var container_price = document.querySelectorAll("#queried_product .col-sm-4 #price");
-				
-				
-				container_title[5+i-err_cnt].innerHTML = title;
-				container_link[5+i-err_cnt].href = product_link;
-				container_price[5+i-err_cnt].innerHTML = price;
-				container_img[5+i-err_cnt].src = large_img;
-			}catch(err){
-				err_cnt += 1;
-				console.log("Error for err count: "+ err_cnt);
-				console.log(err);
-			}
-
-		}
-		
-		
-		
-		
+	}catch(err){
+		console.log("Amazon response not recieved");
+		return;
 	}
-
-
-	function show_flipkart_product(data){
-
-		console.log("Flipkart result");
-		data = JSON.parse(data);
-		console.log(data);
-		prev_content = document.getElementById('queried_product');
-		prev_content.innerHTML = "";
-
+	
+	//console.log("Length:" + result.length);
+	err_cnt = 0;
+	for (var i = 0; i < result.length; i++) {
+		
 		try{
-			prev_header = document.getElementById('feature_header');
-			prev_header.innerHTML = "";
-		}
-		catch(err){
-			//console.log(err);
-		}
 
-		initial_content = document.getElementById('features_items');
-		initial_content.innerHTML = '<h2 class="title text-center" id="feature_header">Features Items</h2>' + initial_content.innerHTML;
-		var query_container = document.getElementById("queried_product");
-		
-		
-		
+				try{
+					var price = "Rs "+parseInt(result[i]['Offers']['Offer']['OfferListing']['SalePrice']['Amount'])/100;
+				}catch(err){
+					console.log("Error for product " + i + "in amazon response");
+					console.log(err);
+					try{
+						var price = "Rs "+parseInt(result[i]['Offers']['Offer']['OfferListing']['Price']['Amount'])/100;
+					}catch(err){
+						//console.log("Error for product " + i + "in amazon response");
+						console.log(err);
+						continue;
+					}
+					
 
-		var result = data['products'];
-		
-		err_cnt = 0;
-		for (var i = 0; i < result.length; i++) {
-			
-			
-
+				}
+				try{
+					var large_img = result[i]['LargeImage']['URL'];	
+				}catch(err){
+					console.log("Error for product " + i + " in amazon response");
+					console.log(err);
+					continue;
+				}
+				try{
+					var title = result[i]['ItemAttributes']['Title'];
+				}catch(err){
+					console.log("Error for product " + i + "in amazon response");
+					console.log(err);
+					continue;
+				}
+				try{
+					var product_link = result[i]['DetailPageURL'];
+				}catch(err){
+					console.log("Error for product " + i + "in amazon response");
+					console.log(err);
+					continue;
+				}
 				
-				var price = "Rs "+parseInt(result[i]['productBaseInfo']['productAttributes']['sellingPrice']['amount']);
-				var large_img = result[i]['productBaseInfo']['productAttributes']['imageUrls']['unknown'];
-				var title = result[i]['productBaseInfo']['productAttributes']['title'];
-				var product_link = result[i]['productBaseInfo']['productAttributes']['productUrl'];
-				link_arr = large_img.split("-");
-				link_arr[link_arr.length-2] += "X"+ link_arr[link_arr.length-2];
-				large_img = link_arr.join("-");
+				
 
-				content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
+				content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products" onclick="updateInterest(this)"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
 
 				query_container.innerHTML += content;
 				var container_img = document.querySelectorAll("#queried_product .col-sm-4 img");
@@ -610,77 +583,211 @@
 				var container_link = document.querySelectorAll("#queried_product .col-sm-4 #product_link");
 				var container_price = document.querySelectorAll("#queried_product .col-sm-4 #price");
 				
-				/*console.log("================"+i+"================");
-				console.log(price);
-				console.log(title);
-				console.log(product_link);
-				console.log("\n");*/
 
-			try{
-				container_img[i-err_cnt].src = large_img;
-				container_title[i-err_cnt].innerHTML = title;
-				container_link[i-err_cnt].href = product_link;
-				container_price[i-err_cnt].innerHTML = price;
 				
-			}catch(err){
-				console.log("Flipkart exception: "+err);
-				err_cnt++;
-			}
+				container_title[product_count-err_cnt].innerHTML = title;
+				container_link[product_count-err_cnt].href = product_link;
+				container_price[product_count-err_cnt].innerHTML = price;
+				container_img[product_count-err_cnt].src = large_img;
+				product_count += 1;
 
+		}catch(err){
+			err_cnt += 1;
+			console.log("Error for err count: "+ err_cnt);
+			console.log(product_count+i-err_cnt);
+			
+			console.log(err);
 		}
-		
-		
-		
-		
+
+	}
+	
+	
+	
+	
+}
+
+
+function show_flipkart_product(data){
+
+	console.log("Flipkart result");
+	data = JSON.parse(data);
+	console.log(data);
+	prev_content = document.getElementById('queried_product');
+	prev_content.innerHTML = "";
+
+	try{
+		prev_header = document.getElementById('feature_header');
+		prev_header.innerHTML = "";
+	}
+	catch(err){
+		//console.log(err);
 	}
 
+	initial_content = document.getElementById('features_items');
+	initial_content.innerHTML = '<h2 class="title text-center" id="feature_header">Features Items</h2>' + initial_content.innerHTML;
+	var query_container = document.getElementById("queried_product");
+	
+	
+	
+
+	var result = data['products'];
+	
+	err_cnt = 0;
+	for (var i = 0; i < result.length; i++) {
+		try{	
 
 
-	$(document).ready(function(){
-		
-		$("#search").keypress(function(e){
-			if(e.which == 13) {
-				var query = $(this).val();
+			try{
+					var price = "Rs "+parseInt(result[i]['productBaseInfo']['productAttributes']['sellingPrice']['amount']);
+			}catch(err){
+					console.log("Error for product " + i + "in flipkart response");
+					console.log(err);
+					continue;
 
-				var data = {
-					"query" : query
-				}
-
-				/*$.ajax({
-							url : '/flipkart-api',
-							data : data,
-							dataType : "json",
-							type : 'POST',
-							success	: function(data) {
-								
-								console.log("=======================Flipkart result=====================");
-								console.log(data);
-								show_flipkart_product(data);
-								
-							}
-				});*/
-
-				$.ajax({
-					url : '/amazon-api',
-					data : data,
-					dataType : "json",
-					type : 'POST',
-					success	: function(data) {
-
-						//console.log("=======================Amazon result=====================");
-						//console.log(data);
-						
-						show_flipkart_product(data['flipkart-result']);
-						show_amazon_product(data['amazon-result']['result']);
-						
-
-					}
-				});
-
-				
 			}
-		});
+
+
+			try{
+					img_json = result[i]['productBaseInfo']['productAttributes']['imageUrls'];
+					var key = Object.keys(img_json)[0];
+
+					//var large_img = result[i]['productBaseInfo']['productAttributes']['imageUrls']['unknown'];
+
+					var large_img = img_json[key];
+					link_arr = large_img.split("-");
+					link_arr[link_arr.length-2] += "X"+ link_arr[link_arr.length-2];
+					large_img = link_arr.join("-");
+			}catch(err){
+					console.log("Error for product " + i + "in flipkart response");
+					console.log(err);
+					continue;
+
+			}
+
+			try{
+					var title = result[i]['productBaseInfo']['productAttributes']['title'];
+			}catch(err){
+					console.log("Error for product " + i + "in flipkart response");
+					console.log(err);
+					continue;
+
+			}
+
+			try{
+					var product_link = result[i]['productBaseInfo']['productAttributes']['productUrl'];
+			}catch(err){
+					console.log("Error for product " + i + "in flipkart response");
+					console.log(err);
+					continue;
+
+			}
+
+			content = '<div class="col-sm-4" style="width: 25%"><div class="product-image-wrapper"><div class="single-products" onclick="updateInterest(this)"><div class="productinfo text-center" style="height: 382.33px; width: 256.528px;"><div style="height: 238.333px; width: 256.528px;"><img src="images/home/product1.jpg" alt=""  style="height: 235px; width: auto; max-width: 250px; max-height:" /></div><h2 id="price">Price</h2><p id="product_title">Product Title</p><a href="#" class="btn btn-default add-to-cart" id="product_link"><i class="fa fa-shopping-cart"></i>Buy Now</a></div></div></div></div>'
+
+			query_container.innerHTML += content;
+			var container_img = document.querySelectorAll("#queried_product .col-sm-4 img");
+			var container_title = document.querySelectorAll("#queried_product .col-sm-4 #product_title");
+			var container_link = document.querySelectorAll("#queried_product .col-sm-4 #product_link");
+			var container_price = document.querySelectorAll("#queried_product .col-sm-4 #price");
+			
+			console.log("================"+i+"================");
+			console.log(price);
+			console.log(title);
+			console.log(product_link);
+			console.log(large_img);
+			console.log("\n");
+
+		
+			container_img[product_count-err_cnt].src = large_img;
+			container_title[product_count-err_cnt].innerHTML = title;
+			container_link[product_count-err_cnt].href = product_link;
+			container_price[product_count-err_cnt].innerHTML = price;
+			product_count += 1;
+			
+		}catch(err){
+			console.log("Flipkart exception: "+err);
+			err_cnt++;
+		}
+
+	}
+	
+	product_count -= err_cnt;
+	
+}
+
+function updateInterest(obj){
+
+	uid = document.getElementById("uid").innerHTML;
+	img = obj.getElementsByTagName("img")[0].src;
+	link = obj.getElementsByTagName("a")[0].href;
+	price = obj.getElementsByTagName("h2")[0].innerHTML;
+	title = obj.getElementsByTagName("p")[0].innerHTML;
+	data = {
+		'uid' : uid,
+		'img' : img,
+		'link' : link,
+		'price' :price,
+		'title' : title
+	}
+	//console.log(data);
+
+	$.ajax({
+				url : '/updateInterest',
+				data : data,
+				dataType : "json",
+				type : 'POST',
+				success	: function(data) {
+
+					console.log("Interest updated!!");
+
+				}
+			});
+	
+	
+}
+
+
+$(document).ready(function(){
+	
+	$("#search").keypress(function(e){
+		if(e.which == 13) {
+			var query = $(this).val();
+			var uid = document.getElementById("uid").innerHTML;
+			
+			var data = {
+				"query" : query,
+				 "uid":  uid
+			}
+			console.log(data);
+			$.ajax({
+				url : '/amazon-api',
+				data : data,
+				dataType : "json",
+				type : 'POST',
+				success	: function(data) {
+
+					//console.log("=======================Amazon result=====================");
+					//console.log(data['flipkart']);
+					console.log(data['amazon-result']['result']);
+					//console.log(data['flipkart-result']);
+					
+					if(data['flipkart']){
+						show_flipkart_product(data['flipkart-result']);//Update both function to clean prev result.
+					}
+
+					if(data['amazon']){
+						show_amazon_product(data['amazon-result']['result']);
+					}
+
+					product_count = 0;
+
+				}
+			});
+
+			
+		}
 	});
+});
 </script>
 
 

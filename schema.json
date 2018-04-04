@@ -1,0 +1,129 @@
+{
+  "Wallet" : {
+    "buy-n-earn_transactions" : {
+      "Mon Apr 02 2018 01:44:15 GMT+0530 (IST)" : {
+        "point" : 28,
+        "to" : "saurabh8141@gmail.com",
+        "transactionID" : "6jfoxyldi"
+      },
+      "Mon Apr 02 2018 01:45:59 GMT+0530 (IST)" : {
+        "point" : 43,
+        "to" : "saurabh8141@gmail.com",
+        "transactionID" : "8gubzw7b9"
+      }
+    },
+    "users_wallet_info" : {
+      "5myxwBWwt7e2kbRkuWcfZzAkh9s2" : {
+        "currentMoney" : 0,
+        "currentPoint" : 0,
+        "transactionLog" : {
+          "Mon Apr 02 2018 00:56:19 GMT+0530 (IST)" : {
+            "added" : "False",
+            "point" : "902",
+            "redeemed" : "True",
+            "transactionID" : "b77e6d2t9"
+          },
+          "Mon Apr 02 2018 01:03:18 GMT+0530 (IST)" : {
+            "added" : "False",
+            "point" : 92,
+            "redeemed" : "True",
+            "transactionID" : "rxrrrizfr"
+          },
+          "Mon Apr 02 2018 01:08:02 GMT+0530 (IST)" : {
+            "added" : "False",
+            "point" : 46,
+            "redeemed" : "True",
+            "transactionID" : "v6fj38fr"
+          },
+          "Mon Apr 02 2018 01:44:15 GMT+0530 (IST)" : {
+            "added" : "False",
+            "point" : 28,
+            "redeemed" : "True",
+            "transactionID" : "6jfoxyldi"
+          },
+          "Mon Apr 02 2018 01:45:59 GMT+0530 (IST)" : {
+            "added" : "False",
+            "point" : 43,
+            "redeemed" : "True",
+            "transactionID" : "8gubzw7b9"
+          }
+        }
+      }
+    }
+  },
+  "all_users" : {
+    "5myxwBWwt7e2kbRkuWcfZzAkh9s2" : {
+      "displayName" : "Saurabh Kumar",
+      "email" : "saurabh8141@gmail.com",
+      "photoURL" : "https://lh4.googleusercontent.com/-O1a8BvPItoU/AAAAAAAAAAI/AAAAAAAAC4c/AaQSHReXfg4/photo.jpg",
+      "uid" : "5myxwBWwt7e2kbRkuWcfZzAkh9s2"
+    }
+  },
+  "clicks" : {
+    "5myxwBWwt7e2kbRkuWcfZzAkh9s2" : {
+      "product_click" : {
+        "Mon Apr 02 2018 00:20:16" : {
+          "img" : "http://img.fkcdn.com/image/jb13te80/cap/9/v/z/free-blacknavyhalfnet-bnb-800X800-imafyh95s57d5efg.jpeg",
+          "link" : "https://dl.flipkart.com/dl/bnb-solid-trucker-cap/p/itmf3v6h3xdgzhqm?pid=CAPFYH9ARY8CJ9VZ&affid=tenacious7",
+          "price" : "Rs 199",
+          "title" : "BnB Solid Trucker Cap"
+        },
+        "Mon Apr 02 2018 00:30:26" : {
+          "img" : "http://img.fkcdn.com/image/j226avk0/track-pant/c/3/f/3xl-631mntp3-xnk-shaun-800X800-imaetgzawhgg8gzz.jpeg",
+          "link" : "https://dl.flipkart.com/dl/shaun-printed-men-s-dark-blue-grey-black-track-pants/p/itmethyky4zvqkyf?pid=TKPETHYHPMZDRVUB&affid=tenacious7",
+          "price" : "Rs 999",
+          "title" : "Shaun Printed Men's Dark Blue, Grey, Black Track Pants"
+        },
+        "Sun Apr 01 2018 17:31:01" : {
+          "img" : "http://img.fkcdn.com/image/jdj4k280/stuffed-toy/f/4/g/dimpy-premium-bear-pink-34-dimpy-stuff-800X800-imaf29cafjf2tkns.jpeg",
+          "link" : "https://dl.flipkart.com/dl/dimpy-stuff-premium-bear-pink-34-cm/p/itmffsnfahkefzhc?pid=STFFFRUYH2BGVF4G&affid=tenacious7",
+          "price" : "Rs 299",
+          "title" : "Dimpy Stuff Dimpy Premium Bear Pink  - 34 cm"
+        },
+        "Sun Apr 01 2018 18:43:13" : {
+          "img" : "http://img.fkcdn.com/image/jezzukw0/backpack/y/g/d/fit-pack-gym-84o-0-11-001-backpack-american-tourister-800X800-imaf3j3zuvpmbhd4.jpeg",
+          "link" : "https://dl.flipkart.com/dl/american-tourister-fit-pack-gym-21-l-backpack/p/itmf3umdx4nvb7cq?pid=BKPEW6PZT9PDWYGD&affid=tenacious7",
+          "price" : "Rs 727",
+          "title" : "American Tourister Fit Pack Gym 21 L Backpack"
+        },
+        "Sun Apr 01 2018 18:43:18" : {
+          "img" : "http://img.fkcdn.com/image/j9hdn680/backpack/h/z/w/sb-marvel-spiderman-sbmarsn5wht-backpack-skybags-800X800-imaez9sgkhn9tgfw.jpeg",
+          "link" : "https://dl.flipkart.com/dl/skybags-sb-marvel-spiderman-32-l-backpack/p/itmf3umb42k6zbzv?pid=BKPEYZK4HZMTHHZW&affid=tenacious7",
+          "price" : "Rs 941",
+          "title" : "Skybags Sb Marvel Spiderman 32 L Backpack"
+        },
+        "Sun Apr 01 2018 18:43:20" : {
+          "img" : "http://img.fkcdn.com/image/j8bxvgw0-1/backpack/p/a/r/hoop-small-85o-0-09-001-backpack-american-tourister-800X800-imaeydrurrhurqe2.jpeg",
+          "link" : "https://dl.flipkart.com/dl/american-tourister-hoop-small-21-l-backpack/p/itmf3umbrn6hxm7g?pid=BKPEW6PZMVJ8HPAR&affid=tenacious7",
+          "price" : "Rs 625",
+          "title" : "American Tourister Hoop - Small 21 L Backpack"
+        },
+        "Sun Apr 01 2018 19:10:52" : {
+          "img" : "http://img.fkcdn.com/image/jah3ngw0/shoe/k/n/h/combo-c-486-689-723-349-720-9-axter-multicolor-800X800-imaeyrufr4qyynbh.jpeg",
+          "link" : "https://dl.flipkart.com/dl/bersache-combo-b-486-689-723-349-720-loafers-men/p/itmez6ksaaffbzfm?pid=SHOEZ55QKZWQBDHA&affid=tenacious7",
+          "price" : "Rs 1049",
+          "title" : "Bersache COMBO(B)-486+689+723+349+720 Loafers For Men"
+        }
+      },
+      "search_keyword" : {
+        "Mon Apr 02 2018 00:14:38" : {
+          "query" : "cap"
+        },
+        "Mon Apr 02 2018 00:17:49" : {
+          "query" : "cap"
+        },
+        "Mon Apr 02 2018 00:30:02" : {
+          "query" : "lower"
+        },
+        "Sun Apr 01 2018 17:17:13" : {
+          "query" : "teddy"
+        }
+      }
+    },
+    "search_keyword" : {
+      "Mon Apr 02 2018 00:17:27" : {
+        "query" : "cap"
+      }
+    }
+  }
+}
